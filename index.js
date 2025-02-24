@@ -82,8 +82,9 @@
 // })
 
 
-function PhoneBook(contactName, phoneNumber, gender) {
+function PhoneBook(contactName, lastName, phoneNumber, gender) {
     this.contactName = contactName;
+    this.lastName = lastName;
     this.phoneNumber = phoneNumber;
     this.gender = gender;
     this.displayContactInfo = function () {
@@ -99,11 +100,12 @@ var serialNo = contactList.length; // Ensure serial numbers continue correctly
 
 function contactAdded(contacts) {
     contacts.forEach(contact => {
-        var person = new PhoneBook(contact.contactName, contact.phoneNumber, contact.gender);
+        var person = new PhoneBook(contact.contactName, contact.lastName, contact.phoneNumber, contact.gender);
 
         // Check if contact already exists
         var exists = contactList.some(c =>
             c.contactName === person.contactName &&
+            c.lastName === person.lastName &&
             c.phoneNumber === person.phoneNumber &&
             c.gender === person.gender
         );
@@ -136,6 +138,7 @@ function loadedContact() {
     for (var f = 0; f < contactList.length; f++) {
         var person = new PhoneBook(
             contactList[f].contactName,
+            contactList[f].lastName,
             contactList[f].phoneNumber,
             contactList[f].gender
         );
