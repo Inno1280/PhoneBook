@@ -149,11 +149,12 @@ $(document).ready(function () {
 
     $(".submit-button").on("click", function () {  // Use an ID to avoid conflicts
         var contactName = $(".first-name").val();
-        var phoneNumber = $(".last-name").val();
+        var lastName = $(".last-name").val();
+        var phoneNumber = $(".phone-number").val();
         var gender = $(".gender-select").val();
 
         if (contactName && phoneNumber && gender) {
-            contactAdded([{ contactName, phoneNumber, gender }]);
+            contactAdded([{ contactName, lastName, phoneNumber, gender }]);
         }
     });
 });
